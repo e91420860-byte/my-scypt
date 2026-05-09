@@ -1,15 +1,16 @@
-local uiLoader = loadstring(game:HttpGet('https://raw.githubusercontent.com/topitbopit/dollarware/main/library.lua'))
+local success, uiLoader = pcall(function()
+    return loadstring(game:HttpGet('https://raw.githubusercontent.com/topitbopit/dollarware/main/library.lua'))()
+end)
 
-
+if not success or type(uiLoader) ~= "function" then
+    warn("Nie udalo sie zaladowac biblioteki UI! Sprawdz polaczenie lub executora.")
+    return
+end
 
 local ui = uiLoader({
-
-    rounding = false, -- Whether certain features get rounded
-
-    theme = 'cherry', -- The theme. Available themes are: cherry, orange, lemon, lime, raspberry, blueberry, grape, watermelon
-
-    smoothDragging = true -- Smooth dragging
-
+    rounding = false,
+    theme = 'cherry',
+    smoothDragging = true
 })
 
 
